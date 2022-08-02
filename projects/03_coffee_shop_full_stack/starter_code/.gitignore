@@ -2,6 +2,9 @@ venv/
 .vscode/
 __pycache__/
 test.db
+cofenv
+node_modules
+
 
 # OS generated files #
 ######################

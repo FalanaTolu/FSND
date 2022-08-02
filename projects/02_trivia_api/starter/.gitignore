@@ -1,6 +1,9 @@
 .vscode
 __pycache__
 venv
+trivenv
+notes.txt
+node_modules
 
 # OS generated files #
 ######################

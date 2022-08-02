@@ -3,11 +3,13 @@
     height: 50px;
     display: flex;
     flex-direction: column;
-    border-radius: 7px;
+    border: 1px solid black;
+    border-radius: 50% / 0 0 100% 100%;
     overflow: hidden;
 }
 
 .ingredient {
+    margin: 0;
     width: 50px;
     flex-grow: 1;
 }

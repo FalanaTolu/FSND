@@ -7,7 +7,7 @@
 <ion-content *ngIf="drinks && drinks.items">
 <div style="display: flex; justify-content: center; padding-top: 20px;">
     <ion-card
-     style="align-items: center; display: flex; flex-direction: column; cursor: pointer;" 
+     style="align-items: center; display: flex; flex-direction: column; background-color: #fffff4; cursor: pointer;" 
      *ngFor="let drink of Object.keys(drinks.items)"
      (click)="openForm(drinks.items[drink])">
         <ion-card-header>
@@ -19,7 +19,7 @@
         </ion-card-content>
       </ion-card>
     <ion-card
-     style="opacity: .7; align-items: center; display: flex; flex-direction: column; cursor: pointer;" 
+     style="opacity: .7; align-items: center; background-color: #fffff4; display: flex; flex-direction: column; cursor: pointer;" 
      *ngIf="auth.can('post:drinks')"
      (click)="openForm()">
         <ion-card-header>

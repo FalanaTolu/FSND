@@ -10,6 +10,7 @@ class FormView extends Component {
       question: "",
       answer: "",
       difficulty: 1,
+      type: "",
       category: 1,
       categories: {}
     }
@@ -21,9 +22,11 @@ class FormView extends Component {
       type: "GET",
       success: (result) => {
         this.setState({ categories: result.categories })
+        return
       },
       error: (error) => {
         alert('Unable to load categories. Please try your request again')
+        return
       }
     })
   }
@@ -48,9 +51,38 @@ class FormView extends Component {
       crossDomain: true,
       success: (result) => {
         document.getElementById("add-question-form").reset();
+        alert('Question added successfully')
+        return
       },
       error: (error) => {
         alert('Unable to add question. Please try your request again')
+        return
+      }
+    })
+  }
+
+  submitCategory = (event) => {
+    event.preventDefault();
+     $.ajax({
+      url: '/categories',
+      type: "POST",
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        type: this.state.type
+      }),
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: (result) => {
+        document.getElementById("add-category-form").reset();
+        alert('Category added successfully')
+        return
+      },
+       error: (error) => {
+         alert('Unable to add category. Please try your request again')
+         return
       }
     })
   }
@@ -94,9 +126,20 @@ class FormView extends Component {
           </label>
           <input type="submit" className="button" value="Submit" />
         </form>
+        <h2>Add a New Category</h2>
+        <form className="form-view" id="add-category-form" onSubmit={this.submitCategory}>
+          <label>   
+            Category
+            <input type="text" name="type" onChange={this.handleChange}/>
+          </label>
+          <input type="submit" className="button" value="Submit" />
+        </form>
       </div>
     );
   }
+
 }
 
+
+  
 export default FormView;
